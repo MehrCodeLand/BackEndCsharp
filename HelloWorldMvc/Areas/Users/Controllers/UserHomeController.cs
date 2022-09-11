@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using static Core.Convertor.ViewToString;
 using Microsoft.Data.SqlClient.Server;
+using Microsoft.AspNetCore.Authorization;
 
 namespace HelloWorldMvc.Areas.Users.Controllers
 {
@@ -28,6 +29,9 @@ namespace HelloWorldMvc.Areas.Users.Controllers
         {
             return View();
         }
+
+        [Authorize]
+        public IActionResult Hello() => View();
 
         #region SignUp
 
