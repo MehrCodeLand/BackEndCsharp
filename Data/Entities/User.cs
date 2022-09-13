@@ -10,7 +10,7 @@ namespace Data.Entities
     public class User
     {
         [Key]
-        public string Id { get; set; }
+        public int Id { get; set; }
         [Required(ErrorMessage = "Required")]
         [Display(Name = "Username")]
         public string Username { get; set; }

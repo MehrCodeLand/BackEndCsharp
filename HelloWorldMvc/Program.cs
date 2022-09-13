@@ -15,6 +15,7 @@ builder.Services.AddDbContext<MyDbContext>(options => options.UseSqlServer(
     ));
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IViewRenderService, RenderViewToString>();
+builder.Services.AddScoped<IAdminService, AdminService>();
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;

@@ -1,0 +1,107 @@
+﻿@using Core.DTOs
+@model AdminUsersViewModel
+@{
+    Layout = null;
+}
+
+
+
+
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="row">
+        <form>
+            <div class="col-sm-5 col-md-5">
+                <input type="text" name="filterUsername" class="form-control" placeholder="Username" />
+            </div>
+            <div class="col-sm-5 col-md-5">
+                <input type="text" name="filterEmail" class="form-control" placeholder="Email" />
+            </div>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+    <h1>Admin Page</h1>
+    <ul>
+        <li>
+            <button type="button">
+                <a asp-area="Admin" asp-controller="AdminHome" asp-action="UsersList">
+                    List Of User
+                </a>
+            </button>
+        </li>
+    </ul>
+    <h2>All Users Table</h2>
+
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Eamil</th>
+            <th>Date Created</th>
+            <th>Position</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        @foreach (var user in Model.Users)
+        {
+            <tr>
+                <td>@user.Username</td>
+                <td>@user.Email</td>
+                <td>@user.Created</td>
+                <td>
+                    @if (user.IsActive)
+                    {
+                        <p class="text-success">Active</p>
+                    }
+                    else
+                    {
+                        <p class="text-danger">Down</p>
+                    }
+                </td>
+                <td>
+                    <a href="#" class="btn btn-warning btn-sm">
+                        Edit
+                    </a>
+                </td>
+                <td>
+                    <a href="#" class="btn btn-danger btn-sm">
+                        Delete
+                    </a>
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="row">
+        <div class="col-sm-6">
+            <ul class="pagination">
+
+                @for(int i = 1 ; i <= Model.CountPage; ++i)
+                {
+                    <li>
+                        <a href="/Admin/AdminHome/UsersList?postId=@i">@i</a>
+                    </li>
+                }
+
+            </ul>
+        </div>
+    </div>
+
+</body>

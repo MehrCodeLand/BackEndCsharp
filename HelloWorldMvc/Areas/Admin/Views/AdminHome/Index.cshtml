@@ -1,0 +1,45 @@
+﻿@using Core.DTOs
+@model AdminUsersViewModel
+@{
+    Layout = null;
+}
+
+
+
+
+
+<head>
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td, th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Admin Page</h1>
+    <ul>
+        <li>
+            <button type="button">
+                <a asp-area="Admin" asp-controller="AdminHome" asp-action="UsersList">
+                    List Of User
+                </a>
+            </button>
+        </li>
+    </ul>
+    <h2>All Users Table</h2>
+
+
+</body>

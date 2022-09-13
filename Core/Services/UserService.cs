@@ -1,5 +1,6 @@
 ﻿using Core.DTOs;
 using Core.Generator;
+using Core.Security;
 using Core.Services.Interfaces;
 using Data.Context;
 using Data.Entities;
@@ -38,7 +39,9 @@ namespace Core.Services
 
         public User FindUserByEmailOrUsername( SignInViewModel signIn)
         {
-            return _db.Users.SingleOrDefault(u => (u.Email == signIn.UsernameOrEmail) || (u.Username == signIn.UsernameOrEmail) && (u.Password == signIn.Password));
+            signIn.Password = PasswordHashC.EncodePasswordMd5(signIn.Password);
+            User user = _db.Users.SingleOrDefault(u => (u.Email == signIn.UsernameOrEmail) || (u.Username == signIn.UsernameOrEmail) && (u.Password == signIn.Password));
+            return user;
         }
 
         public User GetUserByActiveCode(string activeCode)

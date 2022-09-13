@@ -82,7 +82,7 @@ namespace HelloWorldMvc.Areas.Users.Controllers
 
         public IActionResult Active(string id)
         {
-            ViewBag.ActiveUser = _userService.ActiveUser(id);
+            ViewBag.IsActived = _userService.ActiveUser(id);
             return View();
         }
 
